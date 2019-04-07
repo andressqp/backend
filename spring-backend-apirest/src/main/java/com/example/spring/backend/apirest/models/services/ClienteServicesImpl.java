@@ -34,7 +34,7 @@ public class ClienteServicesImpl  implements IClienteService {
 
 	@Override
 	@Transactional(readOnly = true)
-	public Cliente findById(Long id) {
+	public Cliente findById(int id) {
 		return clienteRepo.findById(id).orElse(null);
 	}
 

@@ -1,6 +1,6 @@
 package com.example.spring.backend.apirest.controllers;
 
-import java.util.Hashtable;
+
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -28,24 +28,14 @@ public class ClienteRestController {
 	private IClienteService clienteService;
 
 	@GetMapping("/Clientes")
-	public Hashtable<Object,Object> verClientes(){
-		Hashtable<Object,Object> response = new Hashtable<Object,Object>();
-		
-		try {
-			List<Cliente> clientes = clienteService.findAll();
-			response.put("isOk", true);
-			response.put("sitios", clientes);
-			response.put("message", "Los clientes fueron encontrados");
-			return response;
-		}catch(Exception e) {
-			response.put("isOk", false);
-			response.put("message", e.toString());
-			return response;
-		}
+	public List<Cliente> verClientes(){
+			List<Cliente> clientes = clienteService.findAll();	
+			return clientes;
+
 	}
 	
 	@GetMapping("/Clientes/{id}")
-	public Cliente show(@PathVariable Long id) {
+	public Cliente show(@PathVariable int id) {
 		return clienteService.findById(id);
 	}
 
@@ -58,7 +48,7 @@ public class ClienteRestController {
 
 	@PutMapping("/Clientes/{id}")
 	@ResponseStatus(HttpStatus.CREATED)
-	public Cliente update(@RequestBody Cliente cliente, @PathVariable Long id) {
+	public Cliente update(@RequestBody Cliente cliente, @PathVariable int id) {
 		Cliente currentCliente = clienteService.findById(id);
 		currentCliente.setNombre(cliente.getNombre());
 		currentCliente.setApellido(cliente.getApellido());
@@ -69,7 +59,7 @@ public class ClienteRestController {
 
 	@DeleteMapping("/Clientes/{id}")
 	@ResponseStatus(HttpStatus.NO_CONTENT)
-	public void delete(@PathVariable Long id) {
+	public void delete(@PathVariable int id) {
 		Cliente currentCliente = clienteService.findById(id);
 		clienteService.delete(currentCliente);
 	}

@@ -11,7 +11,7 @@ import javax.persistence.PrePersist;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
-import javax.validation.constraints.NotEmpty;
+
 
 
 
@@ -21,13 +21,12 @@ public class Cliente implements Serializable {
 	
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
-	private Long id;
-	@NotEmpty
+	private int id;
 	private String nombre;
 	private String apellido;
 	private String identificacion;
 	
-	@Temporal(TemporalType.DATE)
+	@Temporal(TemporalType.TIMESTAMP)
 	private Date fecha;
 	
 	//@OneToMany(mappedBy="cliente",fetch= FetchType.LAZY ,cascade = CascadeType.ALL)
@@ -38,21 +37,23 @@ public class Cliente implements Serializable {
 		fecha = new Date();
 	}
 	
-	public Cliente(String identificacion, String nombre, String apellido) {
+	
+	/*public Cliente(String identificacion, String nombre, String apellido) {
 		super();
 		this.identificacion = identificacion;
 		this.nombre = nombre;
 		this.apellido = apellido;
 	}
+	*/
 	
-	public Cliente () {
+//	public Cliente () {
 		
-	}
+	//}
 
-	public Long getId() {
+	public int getId() {
 		return id;
 	}
-	public void setId(Long id) {
+	public void setId(int id) {
 		this.id = id;
 	}
 	public String getNombre() {
@@ -82,6 +83,7 @@ public class Cliente implements Serializable {
 		this.fecha = fecha;
 	}
 	
+/*	
 	@Override
 	public String toString() {
 		return "{" +
@@ -91,10 +93,8 @@ public class Cliente implements Serializable {
 			", apellidos='" + getApellido() + "'" +
 			"}";
 	}
-	
-	/**
-	 * 
-	 */
+*/	
+
 	private static final long serialVersionUID = 1L;
 	
 	
