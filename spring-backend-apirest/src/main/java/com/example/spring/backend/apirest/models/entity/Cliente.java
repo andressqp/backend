@@ -3,6 +3,7 @@ package com.example.spring.backend.apirest.models.entity;
 import java.io.Serializable;
 import java.util.Date;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -11,6 +12,7 @@ import javax.persistence.PrePersist;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
+import javax.validation.constraints.NotEmpty;
 
 
 
@@ -22,8 +24,11 @@ public class Cliente implements Serializable {
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private int id;
+	@NotEmpty
 	private String nombre;
 	private String apellido;
+	
+	@Column(nullable=false,unique=true)
 	private String identificacion;
 	
 	@Temporal(TemporalType.TIMESTAMP)
