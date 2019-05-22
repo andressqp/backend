@@ -8,6 +8,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import com.example.spring.backend.apirest.models.entity.Cliente;
 import com.example.spring.backend.apirest.models.entity.Factura;
+//import com.example.spring.backend.apirest.models.entity.Region;
 import com.example.spring.backend.apirest.models.repository.IClienteRepository;
 import com.example.spring.backend.apirest.models.repository.IFacturaRepository;
 
@@ -58,4 +59,10 @@ public class ClienteServicesImpl  implements IClienteService {
 		return facturaRepo.findById(id).orElse(null);
 	}
 
+	/*
+	@Override
+	public List<Region> findAllRegiones() {
+		return clienteRepo.findAllRegiones();
+	}
+	*/
 }

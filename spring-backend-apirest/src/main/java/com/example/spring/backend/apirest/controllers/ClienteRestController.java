@@ -36,6 +36,7 @@ public class ClienteRestController {
 
 	}
 
+
 	@GetMapping("/Clientes/{id}")
 	public ResponseEntity<?> show(@PathVariable int id) {
 		Cliente cliente = null;

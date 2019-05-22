@@ -5,6 +5,7 @@ import java.util.List;
 
 import com.example.spring.backend.apirest.models.entity.Cliente;
 import com.example.spring.backend.apirest.models.entity.Factura;
+//import com.example.spring.backend.apirest.models.entity.Region;
 
 public interface IClienteService {
 	public List<Cliente> findAll();
@@ -18,5 +19,7 @@ public interface IClienteService {
 	public void saveFactura(Factura factura);
 	
 	public Factura findFacturaById(Long id);
+	
+	//public List<Region> findAllRegiones();
 	
 }
